@@ -16,11 +16,14 @@ namespace DMV_GUI
         protected int noOfSeats;  //has to be >=1
 
         public MotorVehicle() { }
-        public MotorVehicle(string VIN, string make, string model)  //, int noOfWheels, int noOfSeats)
+        public MotorVehicle(string VIN, string make, string model, int noOf Wheels, int noOfSeats, dateOfProduction)  //, int noOfWheels, int noOfSeats)
         {
             this.VIN = VIN;
             this.make = make;
             this.model = model;
+            this.noOfSeats = noOfSeats;
+            this.noOfWheels = noOfWheels;
+            this.dateOfProdction = dateOfProduction;
         }
 
 
@@ -43,9 +46,9 @@ namespace DMV_GUI
     class Truck : MotorVehicle
     {
         private double maxWeight;
-        public Truck(string VIN, string make, string model, double maxWeight)
+        public Truck(string VIN, string make, string model, int noOfSeats, int noOfWheels, DateTime dateOfProduction, double maxWeight)
         {
-            new MotorVehicle(VIN, make, model);
+            new MotorVehicle(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction);
             this.maxWeight = maxWeight;
         }
 
@@ -60,6 +63,11 @@ namespace DMV_GUI
     class Bus : MotorVehicle
     {
         private string companyName;
+        public Bus(string VIN, string make, string model, int noOfSeats, int noOfWheels, DateTime dateOfProduction, string companyName)
+        {
+            new MotorVehicle(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction);
+            this.companyName = companyName;
+        }
     }
 
     //has to have <8 seats to be a car
@@ -68,15 +76,33 @@ namespace DMV_GUI
         private string color;
         private bool AC;
         private int airbags;
+        public Car(string VIN, string make, string model, int noOfSeats, int noOfWheels, DateTime dateOfProduction, string color, bool AC, int airbags)
+        {
+            new MotorVehicle(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction);
+            this.color = color;
+            this.AC = AC;
+            this.airbags = airbags;
+        }
     }
 
     class Taxi : Car
     {
         private bool licence;
+        public Taxi(string VIN, string make, string model, int noOfSeats, int noOfWheels, DateTime dateOfProduction, string color, bool AC, int airbags, bool licence)
+    {
+        new Car(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction, color, AC, airbags);
+        this.licence = licence;
+    }
+    
     }
 
     class Motorcycle : MotorVehicle
     {
         private double ccm;
+        public Motorcycle(string VIN, string make, string model, int noOfSeats, int noOfWheels, DateTime dateOfProduction, double ccm)
+        {
+            new MotorVehicle(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction);
+            this.ccm = ccm;
+        }
     }
 }
