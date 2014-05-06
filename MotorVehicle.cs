@@ -16,14 +16,14 @@ namespace DMV_GUI
         protected int noOfSeats;  //has to be >=1
 
         public MotorVehicle() { }
-        public MotorVehicle(string VIN, string make, string model, int noOfWheels, int noOfSeats, dateOfProduction)  //, int noOfWheels, int noOfSeats)
+        public MotorVehicle(string VIN, string make, string model, int noOfWheels, int noOfSeats, DateTime dateOfProduction)  //, int noOfWheels, int noOfSeats)
         {
             this.VIN = VIN;
             this.make = make;
             this.model = model;
             this.noOfSeats = noOfSeats;
             this.noOfWheels = noOfWheels;
-            this.dateOfProdction = dateOfProduction;
+            this.dateOfProduction = dateOfProduction;
         }
 
 
