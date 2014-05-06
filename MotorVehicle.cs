@@ -76,6 +76,7 @@ namespace DMV_GUI
         private string color;
         private bool AC;
         private int airbags;
+        public Car() { }
         public Car(string VIN, string make, string model, int noOfSeats, int noOfWheels, DateTime dateOfProduction, string color, bool AC, int airbags)
         {
             new MotorVehicle(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction);
