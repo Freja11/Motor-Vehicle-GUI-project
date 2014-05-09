@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DMV_GUI
 {
-    class MotorVehicle
+    abstract class MotorVehicle
     {
         string VIN;
         string make;
