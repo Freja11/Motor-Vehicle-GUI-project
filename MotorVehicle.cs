@@ -46,9 +46,8 @@ namespace DMV_GUI
     class Truck : MotorVehicle
     {
         private double maxWeight;
-        public Truck(string VIN, string make, string model, int noOfSeats, int noOfWheels, DateTime dateOfProduction, double maxWeight)
+        public Truck(string VIN, string make, string model, int noOfSeats, int noOfWheels, DateTime dateOfProduction, double maxWeight) : base(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction)
         {
-            new MotorVehicle(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction);
             this.maxWeight = maxWeight;
         }
 
@@ -63,9 +62,8 @@ namespace DMV_GUI
     class Bus : MotorVehicle
     {
         private string companyName;
-        public Bus(string VIN, string make, string model, int noOfSeats, int noOfWheels, DateTime dateOfProduction, string companyName)
+        public Bus(string VIN, string make, string model, int noOfSeats, int noOfWheels, DateTime dateOfProduction, string companyName) : base(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction)
         {
-            new MotorVehicle(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction);
             this.companyName = companyName;
         }
     }
@@ -77,9 +75,8 @@ namespace DMV_GUI
         private bool AC;
         private int airbags;
         public Car() { }
-        public Car(string VIN, string make, string model, int noOfSeats, int noOfWheels, DateTime dateOfProduction, string color, bool AC, int airbags)
+        public Car(string VIN, string make, string model, int noOfSeats, int noOfWheels, DateTime dateOfProduction, string color, bool AC, int airbags) : base(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction)
         {
-            new MotorVehicle(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction);
             this.color = color;
             this.AC = AC;
             this.airbags = airbags;
@@ -100,9 +97,8 @@ namespace DMV_GUI
     class Motorcycle : MotorVehicle
     {
         private double ccm;
-        public Motorcycle(string VIN, string make, string model, int noOfSeats, int noOfWheels, DateTime dateOfProduction, double ccm)
+        public Motorcycle(string VIN, string make, string model, int noOfSeats, int noOfWheels, DateTime dateOfProduction, double ccm) : base(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction)
         {
-            new MotorVehicle(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction);
             this.ccm = ccm;
         }
     }
