@@ -51,7 +51,7 @@ namespace DMV_GUI
             this.maxWeight = maxWeight;
         }
 
-        string Show()
+        string show()
         {
             return "Truck " + "make and model " + " and has max weight of" + maxWeight;
         }
@@ -66,7 +66,7 @@ namespace DMV_GUI
         {
             this.companyName = companyName;
         }
-        string Show()
+        string show()
         {
             return "Bus " + "make and model " + ", company: " + companyName;
         }
@@ -85,7 +85,7 @@ namespace DMV_GUI
             this.AC = AC;
             this.airbags = airbags;
         }
-        string Show()
+        string show()
         {
             return "Car " + "make and model " + " in " + color + "has AC: " + AC + " and has" + airbags + "airbags.";
         }
@@ -99,7 +99,7 @@ namespace DMV_GUI
         new Car(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction, color, AC, airbags);
         this.licence = licence;
     }
-        string Show()
+        string show()
         {
             return "Taxi " + "make and model " + " and has the licence plate: " + licence;
         }
@@ -113,7 +113,7 @@ namespace DMV_GUI
         {
             this.ccm = ccm;
         }
-             string Show()
+             string show()
         {
             return "Motorcycle " + "make and model " + " and has ccm of: " + ccm;
         }
