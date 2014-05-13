@@ -66,6 +66,10 @@ namespace DMV_GUI
         {
             this.companyName = companyName;
         }
+        string Show()
+        {
+            return "Bus " + "make and model " + ", company: " + companyName;
+        }
     }
 
     //has to have <8 seats to be a car
@@ -81,6 +85,10 @@ namespace DMV_GUI
             this.AC = AC;
             this.airbags = airbags;
         }
+        string Show()
+        {
+            return "Car " + "make and model " + " in " + color + "has AC: " + AC + " and has" + airbags + "airbags.";
+        }
     }
 
     class Taxi : Car
@@ -91,15 +99,23 @@ namespace DMV_GUI
         new Car(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction, color, AC, airbags);
         this.licence = licence;
     }
-    
+        string Show()
+        {
+            return "Taxi " + "make and model " + " and has the licence plate: " + licence;
+        }
     }
 
     class Motorcycle : MotorVehicle
     {
         private double ccm;
-        public Motorcycle(string VIN, string make, string model, int noOfSeats, int noOfWheels, DateTime dateOfProduction, double ccm) : base(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction)
+        public Motorcycle(string VIN, string make, string model, int noOfSeats, int noOfWheels, DateTime dateOfProduction, double ccm)
+            : base(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction)
         {
             this.ccm = ccm;
+        }
+             string Show()
+        {
+            return "Motorcycle " + "make and model " + " and has ccm of: " + ccm;
         }
     }
 }
