@@ -31,9 +31,6 @@ namespace DMV_GUI
             this.textBoxVIN = new System.Windows.Forms.TextBox();
             this.textBoxMake = new System.Windows.Forms.TextBox();
             this.textBoxModel = new System.Windows.Forms.TextBox();
-            this.textBoxDateOfProd = new System.Windows.Forms.TextBox();
-            this.textBoxNoOfWheels = new System.Windows.Forms.TextBox();
-            this.textBoxNoOfSeats = new System.Windows.Forms.TextBox();
             this.VINLabel = new System.Windows.Forms.Label();
             this.MakeLabel = new System.Windows.Forms.Label();
             this.ModelLabel = new System.Windows.Forms.Label();
@@ -41,16 +38,28 @@ namespace DMV_GUI
             this.noOfWheelsLabel = new System.Windows.Forms.Label();
             this.noOfSeatsLabel = new System.Windows.Forms.Label();
             this.propertiesGroupBox = new System.Windows.Forms.GroupBox();
+            this.NoOfSeats = new System.Windows.Forms.NumericUpDown();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.NoOfWheels = new System.Windows.Forms.NumericUpDown();
+            this.radioButtonNo = new System.Windows.Forms.RadioButton();
+            this.radioButtonYes = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.vehicleTypeGroupBox = new System.Windows.Forms.GroupBox();
-            this.radioButtonTruck = new System.Windows.Forms.RadioButton();
-            this.radioButtonBus = new System.Windows.Forms.RadioButton();
-            this.radioButtonCar = new System.Windows.Forms.RadioButton();
-            this.radioButtonTaxi = new System.Windows.Forms.RadioButton();
             this.radioButtonMotorcycle = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
+            this.radioButtonTaxi = new System.Windows.Forms.RadioButton();
+            this.radioButtonCar = new System.Windows.Forms.RadioButton();
+            this.radioButtonBus = new System.Windows.Forms.RadioButton();
+            this.radioButtonTruck = new System.Windows.Forms.RadioButton();
+            this.buttonRegVeh = new System.Windows.Forms.Button();
             this.groupBoxVehicleInfo = new System.Windows.Forms.GroupBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.propertiesGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NoOfSeats)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NoOfWheels)).BeginInit();
             this.vehicleTypeGroupBox.SuspendLayout();
             this.groupBoxVehicleInfo.SuspendLayout();
             this.SuspendLayout();
@@ -76,27 +85,6 @@ namespace DMV_GUI
             this.textBoxModel.Size = new System.Drawing.Size(191, 20);
             this.textBoxModel.TabIndex = 2;
             this.textBoxModel.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
-            // 
-            // textBoxDateOfProd
-            // 
-            this.textBoxDateOfProd.Location = new System.Drawing.Point(7, 144);
-            this.textBoxDateOfProd.Name = "textBoxDateOfProd";
-            this.textBoxDateOfProd.Size = new System.Drawing.Size(192, 20);
-            this.textBoxDateOfProd.TabIndex = 3;
-            // 
-            // textBoxNoOfWheels
-            // 
-            this.textBoxNoOfWheels.Location = new System.Drawing.Point(8, 183);
-            this.textBoxNoOfWheels.Name = "textBoxNoOfWheels";
-            this.textBoxNoOfWheels.Size = new System.Drawing.Size(191, 20);
-            this.textBoxNoOfWheels.TabIndex = 4;
-            // 
-            // textBoxNoOfSeats
-            // 
-            this.textBoxNoOfSeats.Location = new System.Drawing.Point(8, 222);
-            this.textBoxNoOfSeats.Name = "textBoxNoOfSeats";
-            this.textBoxNoOfSeats.Size = new System.Drawing.Size(191, 20);
-            this.textBoxNoOfSeats.TabIndex = 5;
             // 
             // VINLabel
             // 
@@ -155,24 +143,123 @@ namespace DMV_GUI
             // 
             // propertiesGroupBox
             // 
+            this.propertiesGroupBox.Controls.Add(this.NoOfSeats);
+            this.propertiesGroupBox.Controls.Add(this.dateTimePicker1);
+            this.propertiesGroupBox.Controls.Add(this.NoOfWheels);
+            this.propertiesGroupBox.Controls.Add(this.radioButtonNo);
+            this.propertiesGroupBox.Controls.Add(this.radioButtonYes);
+            this.propertiesGroupBox.Controls.Add(this.label3);
+            this.propertiesGroupBox.Controls.Add(this.label2);
+            this.propertiesGroupBox.Controls.Add(this.label1);
+            this.propertiesGroupBox.Controls.Add(this.textBox2);
+            this.propertiesGroupBox.Controls.Add(this.textBox1);
             this.propertiesGroupBox.Controls.Add(this.textBoxVIN);
-            this.propertiesGroupBox.Controls.Add(this.textBoxNoOfSeats);
             this.propertiesGroupBox.Controls.Add(this.noOfSeatsLabel);
             this.propertiesGroupBox.Controls.Add(this.VINLabel);
             this.propertiesGroupBox.Controls.Add(this.noOfWheelsLabel);
-            this.propertiesGroupBox.Controls.Add(this.textBoxNoOfWheels);
             this.propertiesGroupBox.Controls.Add(this.textBoxMake);
             this.propertiesGroupBox.Controls.Add(this.dateOfProdLabel);
             this.propertiesGroupBox.Controls.Add(this.MakeLabel);
             this.propertiesGroupBox.Controls.Add(this.ModelLabel);
             this.propertiesGroupBox.Controls.Add(this.textBoxModel);
-            this.propertiesGroupBox.Controls.Add(this.textBoxDateOfProd);
             this.propertiesGroupBox.Location = new System.Drawing.Point(12, 12);
             this.propertiesGroupBox.Name = "propertiesGroupBox";
-            this.propertiesGroupBox.Size = new System.Drawing.Size(209, 264);
+            this.propertiesGroupBox.Size = new System.Drawing.Size(209, 396);
             this.propertiesGroupBox.TabIndex = 12;
             this.propertiesGroupBox.TabStop = false;
             this.propertiesGroupBox.Text = "PROPERTIES";
+            // 
+            // NoOfSeats
+            // 
+            this.NoOfSeats.Location = new System.Drawing.Point(7, 222);
+            this.NoOfSeats.Name = "NoOfSeats";
+            this.NoOfSeats.Size = new System.Drawing.Size(191, 20);
+            this.NoOfSeats.TabIndex = 18;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(6, 144);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(192, 20);
+            this.dateTimePicker1.TabIndex = 17;
+            // 
+            // NoOfWheels
+            // 
+            this.NoOfWheels.Location = new System.Drawing.Point(6, 183);
+            this.NoOfWheels.Name = "NoOfWheels";
+            this.NoOfWheels.Size = new System.Drawing.Size(192, 20);
+            this.NoOfWheels.TabIndex = 17;
+            // 
+            // radioButtonNo
+            // 
+            this.radioButtonNo.AutoSize = true;
+            this.radioButtonNo.Location = new System.Drawing.Point(100, 348);
+            this.radioButtonNo.Name = "radioButtonNo";
+            this.radioButtonNo.Size = new System.Drawing.Size(41, 17);
+            this.radioButtonNo.TabIndex = 24;
+            this.radioButtonNo.TabStop = true;
+            this.radioButtonNo.Text = "NO";
+            this.radioButtonNo.UseVisualStyleBackColor = true;
+            this.radioButtonNo.Visible = false;
+            // 
+            // radioButtonYes
+            // 
+            this.radioButtonYes.AutoSize = true;
+            this.radioButtonYes.Location = new System.Drawing.Point(48, 348);
+            this.radioButtonYes.Name = "radioButtonYes";
+            this.radioButtonYes.Size = new System.Drawing.Size(46, 17);
+            this.radioButtonYes.TabIndex = 23;
+            this.radioButtonYes.TabStop = true;
+            this.radioButtonYes.Text = "YES";
+            this.radioButtonYes.UseVisualStyleBackColor = true;
+            this.radioButtonYes.Visible = false;
+            this.radioButtonYes.CheckedChanged += new System.EventHandler(this.radioButtonYes_CheckedChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(59, 332);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "label3";
+            this.label3.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(79, 286);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "label2";
+            this.label2.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(79, 245);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "label1";
+            this.label1.Visible = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(7, 302);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(191, 20);
+            this.textBox2.TabIndex = 18;
+            this.textBox2.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(8, 262);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(191, 20);
+            this.textBox1.TabIndex = 17;
+            this.textBox1.Visible = false;
             // 
             // vehicleTypeGroupBox
             // 
@@ -188,50 +275,6 @@ namespace DMV_GUI
             this.vehicleTypeGroupBox.TabStop = false;
             this.vehicleTypeGroupBox.Text = "VEHICLE TYPE";
             // 
-            // radioButtonTruck
-            // 
-            this.radioButtonTruck.AutoSize = true;
-            this.radioButtonTruck.Location = new System.Drawing.Point(6, 29);
-            this.radioButtonTruck.Name = "radioButtonTruck";
-            this.radioButtonTruck.Size = new System.Drawing.Size(53, 17);
-            this.radioButtonTruck.TabIndex = 0;
-            this.radioButtonTruck.TabStop = true;
-            this.radioButtonTruck.Text = "Truck";
-            this.radioButtonTruck.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonBus
-            // 
-            this.radioButtonBus.AutoSize = true;
-            this.radioButtonBus.Location = new System.Drawing.Point(6, 48);
-            this.radioButtonBus.Name = "radioButtonBus";
-            this.radioButtonBus.Size = new System.Drawing.Size(43, 17);
-            this.radioButtonBus.TabIndex = 1;
-            this.radioButtonBus.TabStop = true;
-            this.radioButtonBus.Text = "Bus";
-            this.radioButtonBus.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonCar
-            // 
-            this.radioButtonCar.AutoSize = true;
-            this.radioButtonCar.Location = new System.Drawing.Point(6, 66);
-            this.radioButtonCar.Name = "radioButtonCar";
-            this.radioButtonCar.Size = new System.Drawing.Size(41, 17);
-            this.radioButtonCar.TabIndex = 2;
-            this.radioButtonCar.TabStop = true;
-            this.radioButtonCar.Text = "Car";
-            this.radioButtonCar.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonTaxi
-            // 
-            this.radioButtonTaxi.AutoSize = true;
-            this.radioButtonTaxi.Location = new System.Drawing.Point(6, 85);
-            this.radioButtonTaxi.Name = "radioButtonTaxi";
-            this.radioButtonTaxi.Size = new System.Drawing.Size(45, 17);
-            this.radioButtonTaxi.TabIndex = 3;
-            this.radioButtonTaxi.TabStop = true;
-            this.radioButtonTaxi.Text = "Taxi";
-            this.radioButtonTaxi.UseVisualStyleBackColor = true;
-            // 
             // radioButtonMotorcycle
             // 
             this.radioButtonMotorcycle.AutoSize = true;
@@ -243,14 +286,63 @@ namespace DMV_GUI
             this.radioButtonMotorcycle.Text = "Motorcycle";
             this.radioButtonMotorcycle.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // radioButtonTaxi
             // 
-            this.button1.Location = new System.Drawing.Point(228, 144);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 132);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.radioButtonTaxi.AutoSize = true;
+            this.radioButtonTaxi.Location = new System.Drawing.Point(6, 85);
+            this.radioButtonTaxi.Name = "radioButtonTaxi";
+            this.radioButtonTaxi.Size = new System.Drawing.Size(45, 17);
+            this.radioButtonTaxi.TabIndex = 3;
+            this.radioButtonTaxi.TabStop = true;
+            this.radioButtonTaxi.Text = "Taxi";
+            this.radioButtonTaxi.UseVisualStyleBackColor = true;
+            this.radioButtonTaxi.CheckedChanged += new System.EventHandler(this.radioButtonTaxi_CheckedChanged);
+            // 
+            // radioButtonCar
+            // 
+            this.radioButtonCar.AutoSize = true;
+            this.radioButtonCar.Location = new System.Drawing.Point(6, 66);
+            this.radioButtonCar.Name = "radioButtonCar";
+            this.radioButtonCar.Size = new System.Drawing.Size(41, 17);
+            this.radioButtonCar.TabIndex = 2;
+            this.radioButtonCar.TabStop = true;
+            this.radioButtonCar.Text = "Car";
+            this.radioButtonCar.UseVisualStyleBackColor = true;
+            this.radioButtonCar.CheckedChanged += new System.EventHandler(this.radioButtonCar_CheckedChanged);
+            // 
+            // radioButtonBus
+            // 
+            this.radioButtonBus.AutoSize = true;
+            this.radioButtonBus.Location = new System.Drawing.Point(6, 48);
+            this.radioButtonBus.Name = "radioButtonBus";
+            this.radioButtonBus.Size = new System.Drawing.Size(43, 17);
+            this.radioButtonBus.TabIndex = 1;
+            this.radioButtonBus.TabStop = true;
+            this.radioButtonBus.Text = "Bus";
+            this.radioButtonBus.UseVisualStyleBackColor = true;
+            this.radioButtonBus.CheckedChanged += new System.EventHandler(this.radioButtonBus_CheckedChanged);
+            // 
+            // radioButtonTruck
+            // 
+            this.radioButtonTruck.AutoSize = true;
+            this.radioButtonTruck.Location = new System.Drawing.Point(6, 29);
+            this.radioButtonTruck.Name = "radioButtonTruck";
+            this.radioButtonTruck.Size = new System.Drawing.Size(53, 17);
+            this.radioButtonTruck.TabIndex = 0;
+            this.radioButtonTruck.TabStop = true;
+            this.radioButtonTruck.Text = "Truck";
+            this.radioButtonTruck.UseVisualStyleBackColor = true;
+            this.radioButtonTruck.CheckedChanged += new System.EventHandler(this.radioButtonTruck_CheckedChanged);
+            // 
+            // buttonRegVeh
+            // 
+            this.buttonRegVeh.Location = new System.Drawing.Point(228, 144);
+            this.buttonRegVeh.Name = "buttonRegVeh";
+            this.buttonRegVeh.Size = new System.Drawing.Size(95, 132);
+            this.buttonRegVeh.TabIndex = 14;
+            this.buttonRegVeh.Text = "REGISTER VEHICLE";
+            this.buttonRegVeh.UseVisualStyleBackColor = true;
+            this.buttonRegVeh.Click += new System.EventHandler(this.buttonRegVeh_Click);
             // 
             // groupBoxVehicleInfo
             // 
@@ -274,9 +366,9 @@ namespace DMV_GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 290);
+            this.ClientSize = new System.Drawing.Size(713, 424);
             this.Controls.Add(this.groupBoxVehicleInfo);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonRegVeh);
             this.Controls.Add(this.vehicleTypeGroupBox);
             this.Controls.Add(this.propertiesGroupBox);
             this.Name = "Form1";
@@ -284,6 +376,8 @@ namespace DMV_GUI
             this.Load += new System.EventHandler(this.Form1_Load);
             this.propertiesGroupBox.ResumeLayout(false);
             this.propertiesGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NoOfSeats)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NoOfWheels)).EndInit();
             this.vehicleTypeGroupBox.ResumeLayout(false);
             this.vehicleTypeGroupBox.PerformLayout();
             this.groupBoxVehicleInfo.ResumeLayout(false);
@@ -296,9 +390,6 @@ namespace DMV_GUI
         private System.Windows.Forms.TextBox textBoxVIN;
         private System.Windows.Forms.TextBox textBoxMake;
         private System.Windows.Forms.TextBox textBoxModel;
-        private System.Windows.Forms.TextBox textBoxDateOfProd;
-        private System.Windows.Forms.TextBox textBoxNoOfWheels;
-        private System.Windows.Forms.TextBox textBoxNoOfSeats;
         private System.Windows.Forms.Label VINLabel;
         private System.Windows.Forms.Label MakeLabel;
         private System.Windows.Forms.Label ModelLabel;
@@ -312,9 +403,19 @@ namespace DMV_GUI
         private System.Windows.Forms.RadioButton radioButtonBus;
         private System.Windows.Forms.RadioButton radioButtonTruck;
         private System.Windows.Forms.RadioButton radioButtonMotorcycle;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonRegVeh;
         private System.Windows.Forms.GroupBox groupBoxVehicleInfo;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton radioButtonNo;
+        private System.Windows.Forms.RadioButton radioButtonYes;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.NumericUpDown NoOfSeats;
+        private System.Windows.Forms.NumericUpDown NoOfWheels;
     }
 }
 
