@@ -122,6 +122,16 @@ namespace DMV_GUI
                 
             }
         }
+        
+        private void btnLastVehicle_Click(object sender, EventArgs e)
+        {
+                    FileStream file = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                    StreamReader reader = new StreamReader(file);
+                    string lastVehicle = reader.ReadLine();
+                    richTextBox1.AppendText(lastVehicle + "\n");
+                    reader.Close();
+                    file.Close();   
+        }
 
 
     }
