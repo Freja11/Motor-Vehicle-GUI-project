@@ -37,10 +37,12 @@ namespace DMV_GUI
 
         public string show()
         {
-            return string.Format(" make {0}, model {1} and has {2} wheels", make, model, noOfWheels);
+            return string.Format(" make {1} {0} model {2} {0} and has {3} wheels {4}", fieldSeparator, make, model, noOfWheels, recordSeparator);
         }
 
-
+        public const char fieldSeparator = '|';
+        public const char recordSeparator = '\n';
+        
     }
 
     class Truck : MotorVehicle
@@ -53,7 +55,7 @@ namespace DMV_GUI
 
         string show()
         {
-            return "Truck " + "make and model " + " and has max weight of" + maxWeight;
+            return "Truck " + "make and model " + fieldSeparator + " and has max weight of" + maxWeight + recordSeparator;
         }
         
     }
@@ -68,7 +70,7 @@ namespace DMV_GUI
         }
         string show()
         {
-            return "Bus " + "make and model " + ", company: " + companyName;
+            return "Bus " + "make and model " + fieldSeparator + ", company: " + companyName + recordSeparator;
         }
     }
 
