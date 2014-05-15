@@ -57,6 +57,7 @@ namespace DMV_GUI
             this.buttonRegVeh = new System.Windows.Forms.Button();
             this.groupBoxVehicleInfo = new System.Windows.Forms.GroupBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.btnLastVehicle = new System.Windows.Forms.Button();
             this.propertiesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NoOfSeats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NoOfWheels)).BeginInit();
@@ -349,7 +350,7 @@ namespace DMV_GUI
             this.groupBoxVehicleInfo.Controls.Add(this.richTextBox1);
             this.groupBoxVehicleInfo.Location = new System.Drawing.Point(329, 12);
             this.groupBoxVehicleInfo.Name = "groupBoxVehicleInfo";
-            this.groupBoxVehicleInfo.Size = new System.Drawing.Size(376, 264);
+            this.groupBoxVehicleInfo.Size = new System.Drawing.Size(718, 396);
             this.groupBoxVehicleInfo.TabIndex = 16;
             this.groupBoxVehicleInfo.TabStop = false;
             this.groupBoxVehicleInfo.Text = "VEHICLE INFORMATION";
@@ -358,15 +359,26 @@ namespace DMV_GUI
             // 
             this.richTextBox1.Location = new System.Drawing.Point(6, 19);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(364, 239);
+            this.richTextBox1.Size = new System.Drawing.Size(706, 371);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
+            // 
+            // btnLastVehicle
+            // 
+            this.btnLastVehicle.Location = new System.Drawing.Point(228, 282);
+            this.btnLastVehicle.Name = "btnLastVehicle";
+            this.btnLastVehicle.Size = new System.Drawing.Size(95, 126);
+            this.btnLastVehicle.TabIndex = 17;
+            this.btnLastVehicle.Text = "LAST VEHICLE";
+            this.btnLastVehicle.UseVisualStyleBackColor = true;
+            this.btnLastVehicle.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 424);
+            this.ClientSize = new System.Drawing.Size(1059, 424);
+            this.Controls.Add(this.btnLastVehicle);
             this.Controls.Add(this.groupBoxVehicleInfo);
             this.Controls.Add(this.buttonRegVeh);
             this.Controls.Add(this.vehicleTypeGroupBox);
@@ -416,6 +428,7 @@ namespace DMV_GUI
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.NumericUpDown NoOfSeats;
         private System.Windows.Forms.NumericUpDown NoOfWheels;
+        private System.Windows.Forms.Button btnLastVehicle;
     }
 }
 
