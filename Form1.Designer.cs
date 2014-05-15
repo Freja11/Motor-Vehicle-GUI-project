@@ -371,7 +371,7 @@ namespace DMV_GUI
             this.btnLastVehicle.TabIndex = 17;
             this.btnLastVehicle.Text = "LAST VEHICLE";
             this.btnLastVehicle.UseVisualStyleBackColor = true;
-            this.btnLastVehicle.Click += new System.EventHandler(this.button1_Click);
+            this.btnLastVehicle.Click += new System.EventHandler(this.btnLastVehicle_Click);
             // 
             // Form1
             // 
