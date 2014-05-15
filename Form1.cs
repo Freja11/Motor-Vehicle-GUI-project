@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace DMV_GUI
 {
@@ -14,7 +15,8 @@ namespace DMV_GUI
     {
 
         MotorVehicle[] vehicles = new MotorVehicle[20];
-        int count = 0;
+        int count = 0;       
+        public static string fileName = "log_"+(int)(DateTime.Today.Subtract(new DateTime(1970, 1, 1)).TotalSeconds)+".txt";
 
         public Form1()
         {
@@ -23,7 +25,8 @@ namespace DMV_GUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            FileStream file = new FileStream(fileName, FileMode.Create, FileAccess.Write);
+            file.Close();
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -106,7 +109,17 @@ namespace DMV_GUI
 
             foreach(MotorVehicle m in vehicles)
             {
-                if (m != null) richTextBox1.AppendText(m.show() + '\n');
+                if (m != null)
+                {
+                    richTextBox1.AppendText(m.show() + '\n');
+                    FileStream file = new FileStream(fileName, FileMode.Append, FileAccess.Write);
+                    StreamWriter writer = new StreamWriter(file);
+                    writer.WriteLine(m.show() + '\n');
+                    writer.Close();
+                    file.Close();  
+                }
+
+                
             }
         }
 
