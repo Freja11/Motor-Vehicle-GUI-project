@@ -148,10 +148,10 @@ namespace DMV_GUI
             {
                 if (m != null)
                 {
-                    richTextBox1.AppendText(m.show() + '\n');
+                    richTextBox1.AppendText(mv.show() + '\n');
                     FileStream file = new FileStream(fileName, FileMode.Append, FileAccess.Write); //Create Stream to edit file
                     StreamWriter writer = new StreamWriter(file); //Create file writer
-                    writer.WriteLine(m.show() + '\n'); //Append to file
+                    writer.WriteLine(mv.show() + '\n'); //Append to file
                     writer.Close(); //Close file writer
                     file.Close();  //Close File
                 }        
