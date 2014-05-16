@@ -37,6 +37,7 @@ namespace DMV_GUI
             this.noOfWheelsLabel = new System.Windows.Forms.Label();
             this.noOfSeatsLabel = new System.Windows.Forms.Label();
             this.propertiesGroupBox = new System.Windows.Forms.GroupBox();
+            this.ComboBoxMake = new System.Windows.Forms.ComboBox();
             this.NoOfSeats = new System.Windows.Forms.NumericUpDown();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.NoOfWheels = new System.Windows.Forms.NumericUpDown();
@@ -56,7 +57,7 @@ namespace DMV_GUI
             this.buttonRegVeh = new System.Windows.Forms.Button();
             this.groupBoxVehicleInfo = new System.Windows.Forms.GroupBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.ComboBoxMake = new System.Windows.Forms.ComboBox();
+            this.LastVehicleButton = new System.Windows.Forms.Button();
             this.propertiesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NoOfSeats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NoOfWheels)).BeginInit();
@@ -161,6 +162,14 @@ namespace DMV_GUI
             this.propertiesGroupBox.TabIndex = 12;
             this.propertiesGroupBox.TabStop = false;
             this.propertiesGroupBox.Text = "PROPERTIES";
+            // 
+            // ComboBoxMake
+            // 
+            this.ComboBoxMake.FormattingEnabled = true;
+            this.ComboBoxMake.Location = new System.Drawing.Point(7, 65);
+            this.ComboBoxMake.Name = "ComboBoxMake";
+            this.ComboBoxMake.Size = new System.Drawing.Size(192, 21);
+            this.ComboBoxMake.TabIndex = 17;
             // 
             // NoOfSeats
             // 
@@ -331,7 +340,7 @@ namespace DMV_GUI
             // 
             this.buttonRegVeh.Location = new System.Drawing.Point(228, 144);
             this.buttonRegVeh.Name = "buttonRegVeh";
-            this.buttonRegVeh.Size = new System.Drawing.Size(95, 132);
+            this.buttonRegVeh.Size = new System.Drawing.Size(95, 87);
             this.buttonRegVeh.TabIndex = 14;
             this.buttonRegVeh.Text = "REGISTER VEHICLE";
             this.buttonRegVeh.UseVisualStyleBackColor = true;
@@ -355,19 +364,22 @@ namespace DMV_GUI
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
-            // ComboBoxMake
+            // LastVehicleButton
             // 
-            this.ComboBoxMake.FormattingEnabled = true;
-            this.ComboBoxMake.Location = new System.Drawing.Point(7, 65);
-            this.ComboBoxMake.Name = "ComboBoxMake";
-            this.ComboBoxMake.Size = new System.Drawing.Size(192, 21);
-            this.ComboBoxMake.TabIndex = 17;
+            this.LastVehicleButton.Location = new System.Drawing.Point(228, 238);
+            this.LastVehicleButton.Name = "LastVehicleButton";
+            this.LastVehicleButton.Size = new System.Drawing.Size(95, 32);
+            this.LastVehicleButton.TabIndex = 17;
+            this.LastVehicleButton.Text = "Last vehicle";
+            this.LastVehicleButton.UseVisualStyleBackColor = true;
+            this.LastVehicleButton.Click += new System.EventHandler(this.LastVehicleButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(713, 424);
+            this.Controls.Add(this.LastVehicleButton);
             this.Controls.Add(this.groupBoxVehicleInfo);
             this.Controls.Add(this.buttonRegVeh);
             this.Controls.Add(this.vehicleTypeGroupBox);
@@ -417,6 +429,7 @@ namespace DMV_GUI
         private System.Windows.Forms.NumericUpDown NoOfSeats;
         private System.Windows.Forms.NumericUpDown NoOfWheels;
         private System.Windows.Forms.ComboBox ComboBoxMake;
+        private System.Windows.Forms.Button LastVehicleButton;
     }
 }
 

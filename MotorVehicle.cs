@@ -37,7 +37,7 @@ namespace DMV_GUI
 
         public string show()
         {
-            return string.Format(" make {1} {0} model {2} {0} and has {3} wheels {4}", fieldSeparator, make, model, noOfWheels, recordSeparator);
+            return string.Format("{1,17}{0}{2,15}{0}{3,15}{0}{4:MMddyy}{0}{5,1}{0}{6,2}", " ", VIN, make, model, dateOfProduction, noOfWheels, noOfSeats);
         }
 
         public const char fieldSeparator = '|';

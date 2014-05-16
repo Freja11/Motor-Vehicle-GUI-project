@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Globalization;
 
 namespace DMV_GUI
 {
@@ -15,6 +16,7 @@ namespace DMV_GUI
     {
 
         MotorVehicle[] vehicles = new MotorVehicle[20];
+        String lastFileName = "";
         int count = 0;       
         public static string fileName = "log_"+(int)(DateTime.Today.Subtract(new DateTime(1970, 1, 1)).TotalSeconds)+".txt";
 
@@ -143,21 +145,52 @@ namespace DMV_GUI
                 mv = new Truck(textBoxVIN.Text, ComboBoxMake.Text, textBoxModel.Text, (int)NoOfWheels.Value, (int)NoOfSeats.Value, dateTimePicker1.Value, Convert.ToDouble(textBox1.Text));
             }
 
-            vehicles[count++] = mv;
-            
-            richTextBox1.Clear();
-
-            foreach(MotorVehicle m in vehicles)
+            richTextBox1.Text = mv.show();
+            FileStream file = new FileStream(fileName, FileMode.Append, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(file);
+            writer.WriteLine(mv.show());
+            writer.Close();
+            file.Close(); 
+ 
+            if (!File.Exists("RegisteredVehicles.txt"))
             {
-                if (m != null)
-                {
-                    richTextBox1.AppendText(m.show() + '\n');
-                    FileStream file = new FileStream(fileName, FileMode.Append, FileAccess.Write);
-                    StreamWriter writer = new StreamWriter(file);
-                    writer.WriteLine(m.show() + '\n');
-                    writer.Close();
-                    file.Close();  
-                }        
+                File.Create("RegisteredVehicles.txt").Close();
+            }
+            if (!Directory.Exists("C:\\DVM\\BACKUP"))
+            {
+                Directory.CreateDirectory("C:\\DVM\\BACKUP");
+            }
+            File.Move("RegisteredVehicles.txt", "C:\\DVM\\Backup\\RegisteredVehicles.txt");
+            String name = "C:\\DVM\\Backup\\RegisteredVehicles" + DateTime.Now.ToString("HH-mm-ss dd-MM-yyyy") + ".txt";
+            File.Move("C:\\DVM\\Backup\\RegisteredVehicles.txt", name);
+            file = new FileStream(name, FileMode.Append, FileAccess.Write);
+            writer = new StreamWriter(file);
+            StringBuilder sb = new StringBuilder();
+            writer.WriteLine(mv.show());
+            writer.Close();
+            file.Close();
+            lastFileName = name;
+        }
+
+        private void LastVehicleButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FileStream file = new FileStream(lastFileName, FileMode.Open, FileAccess.Read);
+                StreamReader reader = new StreamReader(file);
+                String[] values = reader.ReadLine().Split(" ".ToCharArray(),StringSplitOptions.RemoveEmptyEntries);
+                textBoxVIN.Text = values[0];
+                ComboBoxMake.Text = values[1];
+                textBoxModel.Text = values[2];
+                dateTimePicker1.Value = DateTime.ParseExact(values[3], "MMddyy", CultureInfo.InvariantCulture);
+                NoOfWheels.Value = int.Parse(values[4]);
+                NoOfSeats.Value = int.Parse(values[5]);
+                reader.Close();
+                file.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("There is no file "+lastFileName+" in C:\\DVM\\Backup");
             }
         }
 
