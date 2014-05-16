@@ -101,5 +101,17 @@ namespace DMV_GUI
                 }
             }
         }
+        
+        private void btnLastVehicle_Click(object sender, EventArgs e) //Get from textfile and display in Richtextbox
+        {
+                    FileStream file = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                    StreamReader reader = new StreamReader(file);
+                    string lastVehicle = reader.ReadLine();
+                    rtLog.AppendText(lastVehicle + "\n");
+                    reader.Close();
+                    file.Close();   
+        }
+        
+        
     }
 }
