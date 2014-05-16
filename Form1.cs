@@ -126,9 +126,6 @@ namespace DMV_GUI
             ComboBoxMake.Sorted = true;
             ComboBoxMake.SelectedIndex = 0;
         }
-        
-
-
 
         private void radioButtonYes_CheckedChanged(object sender, EventArgs e)
         {
@@ -139,7 +136,7 @@ namespace DMV_GUI
         {
             MotorVehicle mv = null;
             if(radioButtonTruck.Checked)
-            {                                                                         //cast                    //cast
+            {
                 mv = new Truck(textBoxVIN.Text, ComboBoxMake.Text, textBoxModel.Text, (int)NoOfWheels.Value, (int)NoOfSeats.Value, dateTimePicker1.Value, Convert.ToDouble(textBox1.Text));
             }
 
@@ -152,11 +149,11 @@ namespace DMV_GUI
                 if (m != null)
                 {
                     richTextBox1.AppendText(m.show() + '\n');
-                    FileStream file = new FileStream(fileName, FileMode.Append, FileAccess.Write);
-                    StreamWriter writer = new StreamWriter(file);
-                    writer.WriteLine(m.show() + '\n');
-                    writer.Close();
-                    file.Close();  
+                    FileStream file = new FileStream(fileName, FileMode.Append, FileAccess.Write); //Create Stream to edit file
+                    StreamWriter writer = new StreamWriter(file); //Create file writer
+                    writer.WriteLine(m.show() + '\n'); //Append to file
+                    writer.Close(); //Close file writer
+                    file.Close();  //Close File
                 }        
             }
         }
