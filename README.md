@@ -1,3 +1,2 @@
-Motor-Vehicle-GUI-project
+Motor Vehicle GUI project for CITA 180
 =========================
-motorVehicle GUI Project for CITA 180
