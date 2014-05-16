@@ -39,16 +39,22 @@ namespace DMV_GUI
 
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void radioButtonTruck_CheckedChanged(object sender, EventArgs e)
         {
             label1.Visible = true;
             label1.Text = "maximum weight";
             textBox1.Visible = true;
+
+            ComboBoxMake.Items.Clear();
+            ComboBoxMake.Items.Add("MAN");
+            ComboBoxMake.Items.Add("Volvo");
+            ComboBoxMake.Items.Add("Mercedes");
+            ComboBoxMake.Items.Add("Ford");
+            ComboBoxMake.Items.Add("Chevrolet");
+            ComboBoxMake.Sorted = true;
+
+            ComboBoxMake.SelectedIndex = 0;
         }
 
         private void radioButtonBus_CheckedChanged(object sender, EventArgs e)
@@ -56,6 +62,16 @@ namespace DMV_GUI
             label1.Visible = true;
             label1.Text = "Company name";
             textBox1.Visible = true;
+
+            ComboBoxMake.Items.Clear();
+            ComboBoxMake.Items.Add("Neoplan");
+            ComboBoxMake.Items.Add("MAN");
+            ComboBoxMake.Items.Add("Volvo");
+            ComboBoxMake.Items.Add("Iveco");
+            ComboBoxMake.Items.Add("Hyundai");
+
+            ComboBoxMake.Sorted = true;
+            ComboBoxMake.SelectedIndex = 0;
         }
 
         private void radioButtonCar_CheckedChanged(object sender, EventArgs e)
@@ -70,6 +86,18 @@ namespace DMV_GUI
             label3.Text = "Does the car have AC?";
             radioButtonYes.Visible = true;
             radioButtonNo.Visible = true;
+
+
+            ComboBoxMake.Items.Clear();
+            ComboBoxMake.Items.Add("Ferrari");
+            ComboBoxMake.Items.Add("Audi");
+            ComboBoxMake.Items.Add("BMW");
+            ComboBoxMake.Items.Add("Volkswagen");
+            ComboBoxMake.Items.Add("Mercedes");
+            ComboBoxMake.Items.Add("Volvo");
+            ComboBoxMake.Items.Add("Ford");
+            ComboBoxMake.Sorted = true;
+            ComboBoxMake.SelectedIndex = 0;
         }
 
         private void radioButtonTaxi_CheckedChanged(object sender, EventArgs e)
@@ -85,6 +113,18 @@ namespace DMV_GUI
             radioButtonYes.Visible = true;
             radioButtonNo.Visible = true;
 
+
+            ComboBoxMake.Items.Clear();
+            ComboBoxMake.Items.Add("Ferrari");
+            ComboBoxMake.Items.Add("Audi");
+            ComboBoxMake.Items.Add("BMW");
+            ComboBoxMake.Items.Add("Volkswagen");
+            ComboBoxMake.Items.Add("Mercedes");
+            ComboBoxMake.Items.Add("Volvo");
+            ComboBoxMake.Items.Add("Ford");
+
+            ComboBoxMake.Sorted = true;
+            ComboBoxMake.SelectedIndex = 0;
         }
         
 
@@ -100,7 +140,7 @@ namespace DMV_GUI
             MotorVehicle mv = null;
             if(radioButtonTruck.Checked)
             {                                                                         //cast                    //cast
-                mv = new Truck(textBoxVIN.Text, textBoxMake.Text, textBoxModel.Text, (int)NoOfWheels.Value, (int)NoOfSeats.Value, dateTimePicker1.Value, Convert.ToDouble(textBox1.Text));
+                mv = new Truck(textBoxVIN.Text, ComboBoxMake.Text, textBoxModel.Text, (int)NoOfWheels.Value, (int)NoOfSeats.Value, dateTimePicker1.Value, Convert.ToDouble(textBox1.Text));
             }
 
             vehicles[count++] = mv;
@@ -117,22 +157,9 @@ namespace DMV_GUI
                     writer.WriteLine(m.show() + '\n');
                     writer.Close();
                     file.Close();  
-                }
-
-                
+                }        
             }
         }
-        
-        private void btnLastVehicle_Click(object sender, EventArgs e)
-        {
-                    FileStream file = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-                    StreamReader reader = new StreamReader(file);
-                    string lastVehicle = reader.ReadLine();
-                    richTextBox1.AppendText(lastVehicle + "\n");
-                    reader.Close();
-                    file.Close();   
-        }
-
 
     }
 }

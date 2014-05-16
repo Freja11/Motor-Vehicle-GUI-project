@@ -29,7 +29,6 @@ namespace DMV_GUI
         private void InitializeComponent()
         {
             this.textBoxVIN = new System.Windows.Forms.TextBox();
-            this.textBoxMake = new System.Windows.Forms.TextBox();
             this.textBoxModel = new System.Windows.Forms.TextBox();
             this.VINLabel = new System.Windows.Forms.Label();
             this.MakeLabel = new System.Windows.Forms.Label();
@@ -57,7 +56,7 @@ namespace DMV_GUI
             this.buttonRegVeh = new System.Windows.Forms.Button();
             this.groupBoxVehicleInfo = new System.Windows.Forms.GroupBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.btnLastVehicle = new System.Windows.Forms.Button();
+            this.ComboBoxMake = new System.Windows.Forms.ComboBox();
             this.propertiesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NoOfSeats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NoOfWheels)).BeginInit();
@@ -71,13 +70,6 @@ namespace DMV_GUI
             this.textBoxVIN.Name = "textBoxVIN";
             this.textBoxVIN.Size = new System.Drawing.Size(192, 20);
             this.textBoxVIN.TabIndex = 0;
-            // 
-            // textBoxMake
-            // 
-            this.textBoxMake.Location = new System.Drawing.Point(6, 66);
-            this.textBoxMake.Name = "textBoxMake";
-            this.textBoxMake.Size = new System.Drawing.Size(192, 20);
-            this.textBoxMake.TabIndex = 1;
             // 
             // textBoxModel
             // 
@@ -144,6 +136,7 @@ namespace DMV_GUI
             // 
             // propertiesGroupBox
             // 
+            this.propertiesGroupBox.Controls.Add(this.ComboBoxMake);
             this.propertiesGroupBox.Controls.Add(this.NoOfSeats);
             this.propertiesGroupBox.Controls.Add(this.dateTimePicker1);
             this.propertiesGroupBox.Controls.Add(this.NoOfWheels);
@@ -158,7 +151,6 @@ namespace DMV_GUI
             this.propertiesGroupBox.Controls.Add(this.noOfSeatsLabel);
             this.propertiesGroupBox.Controls.Add(this.VINLabel);
             this.propertiesGroupBox.Controls.Add(this.noOfWheelsLabel);
-            this.propertiesGroupBox.Controls.Add(this.textBoxMake);
             this.propertiesGroupBox.Controls.Add(this.dateOfProdLabel);
             this.propertiesGroupBox.Controls.Add(this.MakeLabel);
             this.propertiesGroupBox.Controls.Add(this.ModelLabel);
@@ -350,7 +342,7 @@ namespace DMV_GUI
             this.groupBoxVehicleInfo.Controls.Add(this.richTextBox1);
             this.groupBoxVehicleInfo.Location = new System.Drawing.Point(329, 12);
             this.groupBoxVehicleInfo.Name = "groupBoxVehicleInfo";
-            this.groupBoxVehicleInfo.Size = new System.Drawing.Size(718, 396);
+            this.groupBoxVehicleInfo.Size = new System.Drawing.Size(376, 264);
             this.groupBoxVehicleInfo.TabIndex = 16;
             this.groupBoxVehicleInfo.TabStop = false;
             this.groupBoxVehicleInfo.Text = "VEHICLE INFORMATION";
@@ -359,26 +351,23 @@ namespace DMV_GUI
             // 
             this.richTextBox1.Location = new System.Drawing.Point(6, 19);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(706, 371);
+            this.richTextBox1.Size = new System.Drawing.Size(364, 239);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
-            // btnLastVehicle
+            // ComboBoxMake
             // 
-            this.btnLastVehicle.Location = new System.Drawing.Point(228, 282);
-            this.btnLastVehicle.Name = "btnLastVehicle";
-            this.btnLastVehicle.Size = new System.Drawing.Size(95, 126);
-            this.btnLastVehicle.TabIndex = 17;
-            this.btnLastVehicle.Text = "LAST VEHICLE";
-            this.btnLastVehicle.UseVisualStyleBackColor = true;
-            this.btnLastVehicle.Click += new System.EventHandler(this.btnLastVehicle_Click);
+            this.ComboBoxMake.FormattingEnabled = true;
+            this.ComboBoxMake.Location = new System.Drawing.Point(7, 65);
+            this.ComboBoxMake.Name = "ComboBoxMake";
+            this.ComboBoxMake.Size = new System.Drawing.Size(192, 21);
+            this.ComboBoxMake.TabIndex = 17;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1059, 424);
-            this.Controls.Add(this.btnLastVehicle);
+            this.ClientSize = new System.Drawing.Size(713, 424);
             this.Controls.Add(this.groupBoxVehicleInfo);
             this.Controls.Add(this.buttonRegVeh);
             this.Controls.Add(this.vehicleTypeGroupBox);
@@ -400,7 +389,6 @@ namespace DMV_GUI
         #endregion
 
         private System.Windows.Forms.TextBox textBoxVIN;
-        private System.Windows.Forms.TextBox textBoxMake;
         private System.Windows.Forms.TextBox textBoxModel;
         private System.Windows.Forms.Label VINLabel;
         private System.Windows.Forms.Label MakeLabel;
@@ -428,7 +416,7 @@ namespace DMV_GUI
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.NumericUpDown NoOfSeats;
         private System.Windows.Forms.NumericUpDown NoOfWheels;
-        private System.Windows.Forms.Button btnLastVehicle;
+        private System.Windows.Forms.ComboBox ComboBoxMake;
     }
 }
 
