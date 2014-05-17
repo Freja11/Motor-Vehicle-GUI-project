@@ -17,7 +17,7 @@ Now you can Sync all changes directly from your Visual Studio.
 
 Preview:
 
-![Logo](git.png?raw=true)
+![Logo](images/readmePreview.png?raw=true)
 
 -------------------------
 DP
