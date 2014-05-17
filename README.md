@@ -16,6 +16,7 @@ You will need to download the GitHub plugin and log into your account.
 Now you can Sync all changes directly from your Visual Studio.
 
 Preview:
+
 ![Logo](git.png?raw=true)
 
 -------------------------
