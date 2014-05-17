@@ -8,12 +8,12 @@ It will enable you to Push and Fetch all files from GitHub directly to your Visu
 Once you have it installed, open Visual Studio and open the `Team Explorer` tab which should be next to your `Solution Explorer` Tab. If not, you can enable it in `View -> Team Explorer` or by pressing `CTRL+Ž and then CTRL+M`.
 
 Now you need to download this project by clicking `Clone (this repository)` in your GitHub application.
-Choose where you want the project tp be, and choose `Documents -> Visual Studio -> Projects`.
+Choose where you want the project to be, and choose `Documents -> Visual Studio -> Projects`.
 
 Go back to Visual Studio and in `Team Explorer` add this repository to Visual Studio.
 You will need to download the GitHub plugin and log into your account.
 
-Now you can Sync all changes directly from your Visual Studio.
+Now you can Sync all changes directly from your Visual Studio, and you will see new icons appear in the `Solution Explorer` indication pending comiits or if the file is up-to-date
 
 Preview:
 
