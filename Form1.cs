@@ -15,22 +15,22 @@ namespace DMV_GUI
     {
 
         MotorVehicle[] vehicleArray = new MotorVehicle[20]; //Define Array of MotorVehicle objects
-        int count = 0; //Initialize array counter  
-        public static string fileName = "log_"+(int)(DateTime.Today.Subtract(new DateTime(1970, 1, 1)).TotalSeconds)+".txt"; //Define dynamic time-dependant name of textfile
+        int mvArrayCounter = 0; //Initialize array counter  
+        public static string textFile = "log-"+(DateTime.Now.ToString("dd-MM-yyyy"))+".txt"; //Define dynamic time-dependant name of textfile
 
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void onLoad(object sender, EventArgs e)
         {
             VehicleTypeChange(null, null); //Run function to check the default radio button
 
-            if (!File.Exists(fileName)) //Check if our textfile already exists
+            if (!File.Exists(textFile)) //Check if our textfile already exists
             {
-                FileStream file = new FileStream(fileName, FileMode.Create, FileAccess.Write); //Create a new texfile
-                file.Close(); //Close the file, so that other methods can acces it
+                FileStream fileStream = new FileStream(textFile, FileMode.Create, FileAccess.Write); //Create a new texfile
+                fileStream.Close(); //Close the file, so that other methods can acces it
             }
         }
 
@@ -38,29 +38,29 @@ namespace DMV_GUI
         {
             if (rbTruck.Checked)
             {
-                label1.Visible = textBox1.Visible = true;
-                label2.Visible = textBox2.Visible = label3.Visible = radioButtonYes.Visible = radioButtonNo.Visible = false;
-                label1.Text = "maximum weight";
+                customLabel01.Visible = customTb01.Visible = true;
+                customLabel02.Visible = customTb02.Visible = customLabel03.Visible = rbYes.Visible = rbNo.Visible = false;
+                customLabel01.Text = "maximum weight";
             }
             else if (rbBus.Checked)
             {
-                label1.Visible = textBox1.Visible = true;
-                label2.Visible = textBox2.Visible = label3.Visible = radioButtonYes.Visible = radioButtonNo.Visible = false;
-                label1.Text = "Company name";
+                customLabel01.Visible = customTb01.Visible = true;
+                customLabel02.Visible = customTb02.Visible = customLabel03.Visible = rbYes.Visible = rbNo.Visible = false;
+                customLabel01.Text = "Company name";
             }
             else if (rbCar.Checked)
             {
-                label1.Visible = textBox1.Visible = label2.Visible = label3.Visible = textBox2.Visible = radioButtonYes.Visible = radioButtonNo.Visible = true;
-                label1.Text = "Car Color";
-                label2.Text = "Number of airbags";
-                label3.Text = "Does the car have AC?";
+                customLabel01.Visible = customTb01.Visible = customLabel02.Visible = customLabel03.Visible = customTb02.Visible = rbYes.Visible = rbNo.Visible = true;
+                customLabel01.Text = "Car Color";
+                customLabel02.Text = "Number of airbags";
+                customLabel03.Text = "Does the car have AC?";
             }
             else if (rbTaxi.Checked)
             {
-                label1.Visible = textBox1.Visible = label2.Visible = label3.Visible = textBox2.Visible = radioButtonYes.Visible = radioButtonNo.Visible = true;
-                label1.Text = "Car Color";
-                label2.Text = "Number of airbags";
-                label3.Text = "Driver has licence?";
+                customLabel01.Visible = customTb01.Visible = customLabel02.Visible = customLabel03.Visible = customTb02.Visible = rbYes.Visible = rbNo.Visible = true;
+                customLabel01.Text = "Car Color";
+                customLabel02.Text = "Number of airbags";
+                customLabel03.Text = "Driver has licence?";
             }
         }
 
@@ -69,22 +69,22 @@ namespace DMV_GUI
             MotorVehicle mv = null;
             if (rbTruck.Checked)
             {
-                mv = new Truck(textBoxVIN.Text, textBoxMake.Text, textBoxModel.Text, (int)NoOfWheels.Value, (int)NoOfSeats.Value, dateTimePicker1.Value, Convert.ToDouble(textBox1.Text));
+                mv = new Truck(tbVIN.Text, tbMake.Text, tbModel.Text, (int)NoOfWheels.Value, (int)NoOfSeats.Value, datePicker.Value, Convert.ToDouble(customTb01.Text));
             }
             else if (rbBus.Checked)
             {
-                mv = new Bus(textBoxVIN.Text, textBoxMake.Text, textBoxModel.Text, (int)NoOfWheels.Value, (int)NoOfSeats.Value, dateTimePicker1.Value, textBox1.Text);                
+                mv = new Bus(tbVIN.Text, tbMake.Text, tbModel.Text, (int)NoOfWheels.Value, (int)NoOfSeats.Value, datePicker.Value, customTb01.Text);                
             }
             else if (rbCar.Checked)
             {
-                mv = new Car(textBoxVIN.Text, textBoxMake.Text, textBoxModel.Text, (int)NoOfWheels.Value, (int)NoOfSeats.Value, dateTimePicker1.Value, textBox1.Text, radioButtonYes.Checked, Convert.ToInt32(textBox2.Text));                
+                mv = new Car(tbVIN.Text, tbMake.Text, tbModel.Text, (int)NoOfWheels.Value, (int)NoOfSeats.Value, datePicker.Value, customTb01.Text, rbYes.Checked, Convert.ToInt32(customTb02.Text));                
             }
             else if (rbTaxi.Checked)
             {
-                //mv = new Taxi(textBoxVIN.Text, textBoxMake.Text, textBoxModel.Text, (int)NoOfWheels.Value, (int)NoOfSeats.Value, dateTimePicker1.Value, Convert.ToDouble(textBox1.Text));                   
+                
             }
 
-            vehicleArray[count++] = mv; //Append newest object to array
+            vehicleArray[mvArrayCounter++] = mv; //Append newest object to array
             
             rtLog.Clear();
 
@@ -93,7 +93,7 @@ namespace DMV_GUI
                 if (m != null)
                 {
                     rtLog.AppendText(m.show() + "\n\n");
-                    using (FileStream file = new FileStream(fileName, FileMode.Append, FileAccess.Write))
+                    using (FileStream file = new FileStream(textFile, FileMode.Append, FileAccess.Write))
                     {
                         using (StreamWriter writer = new StreamWriter(file))
                         {
@@ -109,18 +109,18 @@ namespace DMV_GUI
         
         private void ShowLastVehicleFromFile(object sender, EventArgs e) //Get from textfile and display in Richtextbox
         {
-            using (FileStream file = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            using (FileStream fileStream = new FileStream(textFile, FileMode.Open, FileAccess.Read))
             {
-                using (StreamReader reader = new StreamReader(file))
+                using (StreamReader streamReader = new StreamReader(fileStream))
                 {
-                    string fileLines;
+                    string allFileLines;
                     string[] currentLine = new String[20];
-                    int counter = 0;
+                    int lineCounter = 0;
 
-                    while((fileLines = reader.ReadLine()) != null) {
+                    while((allFileLines = streamReader.ReadLine()) != null) {
                         try
                         {
-                            currentLine[counter++] = fileLines;
+                            currentLine[lineCounter++] = allFileLines;
                         }
                         catch
                         {
@@ -128,10 +128,10 @@ namespace DMV_GUI
                         }
                     }
 
-                    rtLog.AppendText(counter.ToString() + ": " + currentLine[counter-1] + "\n\n");
-                    reader.Close();
+                    rtLog.AppendText(lineCounter.ToString() + ": " + currentLine[lineCounter-1] + "\n\n");
+                    streamReader.Close();
                 }
-                file.Close(); 
+                fileStream.Close(); 
             }        
         }        
     }
