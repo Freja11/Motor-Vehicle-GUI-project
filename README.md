@@ -13,7 +13,7 @@ Choose where you want the project to be, and choose `Documents -> Visual Studio 
 Go back to Visual Studio and in `Team Explorer` add this repository to Visual Studio.
 You will need to download the GitHub plugin and log into your account.
 
-Now you can Sync all changes directly from your Visual Studio, and you will see new icons appear in the `Solution Explorer` indication pending comiits or if the file is up-to-date
+Now you can Sync all changes directly from your Visual Studio, and you will see new icons appear in the `Solution Explorer` indicating pending commits or if the file is up-to-date
 
 Preview:
 
