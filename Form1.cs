@@ -92,26 +92,47 @@ namespace DMV_GUI
             {
                 if (m != null)
                 {
-                    rtLog.AppendText(m.show() + '\n');
-                    FileStream file = new FileStream(fileName, FileMode.Append, FileAccess.Write);
-                    StreamWriter writer = new StreamWriter(file);
-                    writer.WriteLine(m.show() + '\n');
-                    writer.Close();
-                    file.Close();  
+                    rtLog.AppendText(m.show() + "\n\n");
+                    using (FileStream file = new FileStream(fileName, FileMode.Append, FileAccess.Write))
+                    {
+                        using (StreamWriter writer = new StreamWriter(file))
+                        {
+                            writer.WriteLine(m.show());
+                            writer.Close();
+                        }
+                        file.Close();  
+                    }
+                    
                 }
             }
         }
         
-        private void btnLastVehicle_Click(object sender, EventArgs e) //Get from textfile and display in Richtextbox
+        private void ShowLastVehicleFromFile(object sender, EventArgs e) //Get from textfile and display in Richtextbox
         {
-                    FileStream file = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-                    StreamReader reader = new StreamReader(file);
-                    string lastVehicle = reader.ReadLine();
-                    rtLog.AppendText(lastVehicle + "\n");
+            using (FileStream file = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            {
+                using (StreamReader reader = new StreamReader(file))
+                {
+                    string fileLines;
+                    string[] currentLine = new String[20];
+                    int counter = 0;
+
+                    while((fileLines = reader.ReadLine()) != null) {
+                        try
+                        {
+                            currentLine[counter++] = fileLines;
+                        }
+                        catch
+                        {
+                            break;
+                        }
+                    }
+
+                    rtLog.AppendText(counter.ToString() + ": " + currentLine[counter-1] + "\n\n");
                     reader.Close();
-                    file.Close();   
-        }
-        
-        
+                }
+                file.Close(); 
+            }        
+        }        
     }
 }

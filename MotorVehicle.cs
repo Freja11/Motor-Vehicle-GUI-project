@@ -44,7 +44,7 @@ namespace DMV_GUI
 
         public override string show()
         {
-            return string.Format("Truck: " + base.show() + " {0} Maximum Weight: {1}\n", fieldSep, maxWeight);
+            return string.Format("Truck: " + base.show() + " {0} Maximum Weight: {1}", fieldSep, maxWeight);
         }
     }
 
@@ -61,7 +61,7 @@ namespace DMV_GUI
 
         public override string show()
         {
-            return string.Format("Bus: " + base.show() + " {0} Company Name: {1}\n", fieldSep, companyName);
+            return string.Format("Bus: " + base.show() + " {0} Company Name: {1}", fieldSep, companyName);
         }
     }
 
@@ -82,7 +82,7 @@ namespace DMV_GUI
 
         public override string show()
         {
-            return string.Format("Car: " + base.show() + " {0} Color: {1} {0} Has AC: {2} {0} Number of Airbags: {3}\n", fieldSep, color, AC, airbags);
+            return string.Format("Car: " + base.show() + " {0} Color: {1} {0} Has AC: {2} {0} Number of Airbags: {3}", fieldSep, color, AC, airbags);
         }
     }
 
@@ -99,7 +99,7 @@ namespace DMV_GUI
 
         public override string show()
         {
-            return "Taxi " + "make and model " + " and has the licence plate: " + licence;
+            return "Taxi";
         }
     }
 
@@ -115,7 +115,7 @@ namespace DMV_GUI
 
         public override string show()
         {
-            return string.Format("Motorcycle: " + base.show() + " {0} CCM: {1} {0} Has AC: {2} {0} Number of Airbags: {3}\n", fieldSep, ccm);
+            return string.Format("Motorcycle: " + base.show() + " {0} CCM: {1} {0} Has AC: {2} {0} Number of Airbags: {3}", fieldSep, ccm);
         }
     }
 }
