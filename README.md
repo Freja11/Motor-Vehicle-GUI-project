@@ -14,5 +14,6 @@ Go back to Visual Studio and in Team Explorer add this repository to Visual Stud
 You will need to download the GitHub plugin and log into your account.
 
 Now you can Sync all changes directly from your Visual Studio.
+
 -------------------------
 DP
