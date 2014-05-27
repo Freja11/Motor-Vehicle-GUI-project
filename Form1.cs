@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,136 +14,126 @@ namespace DMV_GUI
     public partial class Form1 : Form
     {
 
-        MotorVehicle[] vehicles = new MotorVehicle[20];
-        int[] scores = { 12, 34, 54, 65 };
-       
-        // Car[] cars = new Car[] { new Car() { color = "red", AC = true, airbags = 4 } };
-
-        // Car car = new Car() { color = "red", AC = true, airbags = 4  };
-        // je jednako
-        Car car = new Car();
-        //car.color = "red";
-        //car.AC = true;
-        //car.airbags = 4;
-
-
-        int count = 0;
+        MotorVehicle[] vehicleArray = new MotorVehicle[20]; //Define Array of MotorVehicle objects
+        int mvArrayCounter = 0; //Initialize array counter  
+        public static string textFile = "log-"+(DateTime.Now.ToString("dd-MM-yyyy"))+".txt"; //Define dynamic time-dependant name of textfile
 
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void onLoad(object sender, EventArgs e)
         {
+            VehicleTypeChange(null, null); //Run function to check the default radio button
 
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Model_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButtonTruck_CheckedChanged(object sender, EventArgs e)
-        {
-            label1.Visible = true;
-            label1.Text = "maximum weight";
-            textBox1.Visible = true;
-        }
-
-        private void radioButtonBus_CheckedChanged(object sender, EventArgs e)
-        {
-            label1.Visible = true;
-            label1.Text = "Company name";
-            textBox1.Visible = true;
-        }
-
-        private void radioButtonCar_CheckedChanged(object sender, EventArgs e)
-        {
-            label1.Visible = true;
-            label1.Text = "Car Color";
-            textBox1.Visible = true;
-            label2.Visible = true;
-            label2.Text = "Number of airbags";
-            textBox2.Visible = true;
-            label3.Visible = true;
-            label3.Text = "Does the car have AC?";
-            radioButtonYes.Visible = true;
-            radioButtonNo.Visible = true;
-        }
-
-        private void radioButtonTaxi_CheckedChanged(object sender, EventArgs e)
-        {
-            label1.Visible = true;
-            label1.Text = "Car Color";
-            textBox1.Visible = true;
-            label2.Visible = true;
-            label2.Text = "Number of airbags";
-            textBox2.Visible = true;
-            label3.Visible = true;
-            label3.Text = "Driver has licence?";
-            radioButtonYes.Visible = true;
-            radioButtonNo.Visible = true;
-
-        }
-        
-
-
-
-        private void radioButtonYes_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonRegVeh_Click(object sender, EventArgs e)
-        {
-            // Car car = new Car() { color = "red", AC = true, airbags = 4  };
-
-            Car c = new Car();
-
-            //c.setAirbags(4);
-
-            c.Airbag = 4; //set method
-
-            c.Color = "red";
-
-            int numberOfAirbags = c.Airbag; //get method
-
-
-            MotorVehicle mv = null;
-            if(radioButtonTruck.Checked)
-            {                                                                         //cast                    //cast
-                mv = new Truck(textBoxVIN.Text, textBoxMake.Text, textBoxModel.Text, (int)NoOfWheels.Value, (int)NoOfSeats.Value, dateTimePicker1.Value, Convert.ToDouble(textBox1.Text));
-            }
-
-            vehicles[count++] = mv;
-            
-            richTextBox1.Clear();
-
-            foreach(MotorVehicle m in vehicles)
+            if (!File.Exists(textFile)) //Check if our textfile already exists
             {
-                if (m != null) richTextBox1.AppendText(m.show() + '\n');
+                FileStream fileStream = new FileStream(textFile, FileMode.Create, FileAccess.Write); //Create a new texfile
+                fileStream.Close(); //Close the file, so that other methods can acces it
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void VehicleTypeChange(object sender, EventArgs e) //Method for radio button selector. Displays required fileds for diferent types of motor Vehicles
         {
-            
+            if (rbTruck.Checked)
+            {
+                customLabel01.Visible = customTb01.Visible = true;
+                customLabel02.Visible = customTb02.Visible = customLabel03.Visible = rbYes.Visible = rbNo.Visible = false;
+                customLabel01.Text = "maximum weight";
+            }
+            else if (rbBus.Checked)
+            {
+                customLabel01.Visible = customTb01.Visible = true;
+                customLabel02.Visible = customTb02.Visible = customLabel03.Visible = rbYes.Visible = rbNo.Visible = false;
+                customLabel01.Text = "Company name";
+            }
+            else if (rbCar.Checked)
+            {
+                customLabel01.Visible = customTb01.Visible = customLabel02.Visible = customLabel03.Visible = customTb02.Visible = rbYes.Visible = rbNo.Visible = true;
+                customLabel01.Text = "Car Color";
+                customLabel02.Text = "Number of airbags";
+                customLabel03.Text = "Does the car have AC?";
+            }
+            else if (rbTaxi.Checked)
+            {
+                customLabel01.Visible = customTb01.Visible = customLabel02.Visible = customLabel03.Visible = customTb02.Visible = rbYes.Visible = rbNo.Visible = customLabel04.Visible = rbYes2.Visible = rbNo2.Visible = true;
+                customLabel01.Text = "Car Color";
+                customLabel02.Text = "Number of airbags";
+                customLabel03.Text = "Cab has AC?";
+                customLabel04.Text = "Driver has licence?";
+            }
         }
 
-        FileStream outFile = new
-        FileStream("SomeText.txt", FileMode.Create, FileAccess.Write);
-        
+        private void RegisterVehicleClick(object sender, EventArgs e) //Button Click method. Creates objects, puts them in our array, then displays them in log as well as stores them in out textfile
+        {
+            MotorVehicle mv = null;
+            if (rbTruck.Checked)
+            {
+                mv = new Truck(tbVIN.Text, tbMake.Text, tbModel.Text, (int)NoOfWheels.Value, (int)NoOfSeats.Value, datePicker.Value, Convert.ToDouble(customTb01.Text));
+            }
+            else if (rbBus.Checked)
+            {
+                mv = new Bus(tbVIN.Text, tbMake.Text, tbModel.Text, (int)NoOfWheels.Value, (int)NoOfSeats.Value, datePicker.Value, customTb01.Text);                
+            }
+            else if (rbCar.Checked)
+            {
+                mv = new Car(tbVIN.Text, tbMake.Text, tbModel.Text, (int)NoOfWheels.Value, (int)NoOfSeats.Value, datePicker.Value, customTb01.Text, rbYes.Checked, Convert.ToInt32(customTb02.Text));                
+            }
+            else if (rbTaxi.Checked)
+            {
+                mv = new Taxi(tbVIN.Text, tbMake.Text, tbModel.Text, (int)NoOfWheels.Value, (int)NoOfSeats.Value, datePicker.Value, customTb01.Text, rbYes.Checked, Convert.ToInt32(customTb02.Text), rbYes2.Checked);
+            }
 
+            vehicleArray[mvArrayCounter++] = mv; //Append newest object to array
+            
+            rtLog.Clear();
+
+            foreach(MotorVehicle m in vehicleArray) //Display and store in textfile
+            {
+                if (m != null)
+                {
+                    rtLog.AppendText(m.show() + "\n\n");
+                    using (FileStream file = new FileStream(textFile, FileMode.Append, FileAccess.Write))
+                    {
+                        using (StreamWriter writer = new StreamWriter(file))
+                        {
+                            writer.WriteLine(m.show());
+                            writer.Close();
+                        }
+                        file.Close();  
+                    }
+                    
+                }
+            }
+        }
+        
+        private void ShowLastVehicleFromFile(object sender, EventArgs e) //Get from textfile and display in Richtextbox
+        {
+            using (FileStream fileStream = new FileStream(textFile, FileMode.Open, FileAccess.Read))
+            {
+                using (StreamReader streamReader = new StreamReader(fileStream))
+                {
+                    string allFileLines;
+                    string[] currentLine = new String[20];
+                    int lineCounter = 0;
+
+                    while((allFileLines = streamReader.ReadLine()) != null) {
+                        try
+                        {
+                            currentLine[lineCounter++] = allFileLines;
+                        }
+                        catch
+                        {
+                            break;
+                        }
+                    }
+
+                    rtLog.AppendText(lineCounter.ToString() + ": " + currentLine[lineCounter-1] + "\n\n");
+                    streamReader.Close();
+                }
+                fileStream.Close(); 
+            }        
+        }        
     }
 }
