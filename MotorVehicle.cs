@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,17 +6,20 @@ using System.Threading.Tasks;
 
 namespace DMV_GUI
 {
+
+    //MotorVehicle n = new MotorVehicle()
     abstract class MotorVehicle
     {
         string VIN;
         string make;
         string model;
-        DateTime dateOfProduction;
-        protected int noOfWheels;
-        protected int noOfSeats;
-        protected char fieldSep = '|';
+        DateTime dateOfProduction; //datetime , has to be >now
+        protected int noOfWheels; //has to be >2 , <18
+        protected int noOfSeats;  //has to be >=1
 
-        public MotorVehicle(string VIN, string make, string model, int noOfWheels, int noOfSeats, DateTime dateOfProduction)
+        public MotorVehicle() { } //doesnt do anything, it allocates the memory to reserve memory and assing to a variable
+       // public MotorVehicle() { }
+        public MotorVehicle(string VIN, string make, string model, int noOfWheels, int noOfSeats, DateTime dateOfProduction)  //, int noOfWheels, int noOfSeats)
         {
             this.VIN = VIN;
             this.make = make;
@@ -26,96 +29,154 @@ namespace DMV_GUI
             this.dateOfProduction = dateOfProduction;
         }
 
-        public virtual string show()
+
+        
+
+
+
+
+
+        //if VIN is valid return true, otherwise return false
+        public bool SetVIN(string VIN)
         {
-            return string.Format(" Make: {1} {0} Model: {2} {0} Number of Wheels: {3}", fieldSep, make, model, noOfWheels);
+            if (VIN.Length != 17) return false;
+            else return true;
         }
+
+        public string show()
+        {
+            return string.Format(" make {0}, model {1} and has {2} wheels", make, model, noOfWheels);
+        }
+
+
     }
 
     class Truck : MotorVehicle
     {
         private double maxWeight;
-
         public Truck(string VIN, string make, string model, int noOfWheels, int noOfSeats, DateTime dateOfProduction, double maxWeight)
-            : base(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction)
+            : base(VIN, make, model, noOfWheels, noOfSeats, dateOfProduction)
         {
+            
             this.maxWeight = maxWeight;
         }
 
-        public override string show()
+        public string show()
         {
-            return string.Format("Truck: " + base.show() + " {0} Maximum Weight: {1}", fieldSep, maxWeight);
+            return "Truck " + "make and model " + " and has max weight of" + maxWeight;
         }
+        
     }
 
     //has to have >8 seats to be a bus
     class Bus : MotorVehicle
     {
         private string companyName;
-
         public Bus(string VIN, string make, string model, int noOfWheels, int noOfSeats, DateTime dateOfProduction, string companyName)
-            : base(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction)
+            : base(VIN, make, model, noOfWheels, noOfSeats, dateOfProduction)
         {
             this.companyName = companyName;
         }
 
-        public override string show()
+        public string show()
         {
-            return string.Format("Bus: " + base.show() + " {0} Company Name: {1}", fieldSep, companyName);
+            return "Bus " + "make and model " + ", company: " + companyName;
         }
     }
 
     //has to have <8 seats to be a car
     class Car : MotorVehicle
     {
-        private string color;
+        //field
+        private string color; //not needed
         private bool AC;
         private int airbags;
 
+        //property
+        public string Color { set; get; } //called automatic property, if done like this field color is not needed
+        //same as
+        //{
+            //set { color = value; }
+            //get { return color; }
+        //}
+        public int Airbag
+        {
+            set
+            {
+                if (value > 0 && value < 10)
+                {
+                    airbags = value;
+                }
+                else
+                {
+                    airbags = 0;
+                }
+            }
+            get
+            {
+                return airbags;
+            }
+        }
+        //je jednako
+        public void setAirbags(int numberOfAirbags)
+        {
+            if (numberOfAirbags > 0 && numberOfAirbags < 10)
+            {
+                airbags = numberOfAirbags;
+            }
+            else
+            {
+                airbags = 0;
+            }
+        }
+    
+
+    
+
+        public Car() { }
+        public Car(string VIN) { }
         public Car(string VIN, string make, string model, int noOfWheels, int noOfSeats, DateTime dateOfProduction, string color, bool AC, int airbags)
-            : base(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction)
+            : base(VIN, make, model, noOfWheels, noOfSeats, dateOfProduction)
         {
             this.color = color;
             this.AC = AC;
             this.airbags = airbags;
         }
 
-        public override string show()
+        public string show()
         {
-            return string.Format("Car: " + base.show() + " {0} Color: {1} {0} Has AC: {2} {0} Number of Airbags: {3}", fieldSep, color, AC, airbags);
+            return "Car " + "make and model " + " in " + color + "has AC: " + AC + " and has" + airbags + "airbags.";
         }
     }
 
     class Taxi : Car
     {
         private bool licence;
-
         public Taxi(string VIN, string make, string model, int noOfWheels, int noOfSeats, DateTime dateOfProduction, string color, bool AC, int airbags, bool licence)
             : base(VIN, make, model, noOfWheels, noOfSeats, dateOfProduction, color, AC, airbags)
         {
             new Car(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction, color, AC, airbags);
             this.licence = licence;
         }
-
-        public override string show()
+        public string show()
         {
-            return "Taxi";
+            return "Taxi " + "make and model " + " and has the licence plate: " + licence;
         }
     }
 
     class Motorcycle : MotorVehicle
     {
         private double ccm;
-
         public Motorcycle(string VIN, string make, string model, int noOfWheels, int noOfSeats, DateTime dateOfProduction, double ccm)
-            : base(VIN, make, model, noOfSeats, noOfWheels, dateOfProduction)
+            : base(VIN, make, model, noOfWheels, noOfSeats, dateOfProduction)
         {
+
             this.ccm = ccm;
         }
-
-        public override string show()
+        public string show()
         {
-            return string.Format("Motorcycle: " + base.show() + " {0} CCM: {1} {0} Has AC: {2} {0} Number of Airbags: {3}", fieldSep, ccm);
+            return "Motorcycle " + "make and model " + " and has ccm of: " + ccm;
         }
+
     }
 }
