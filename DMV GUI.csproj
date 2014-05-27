@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{107DAD95-3636-4D73-99E7-B908D3D3E048}</ProjectGuid>
+    <ProjectGuid>{8CC5CB0C-E3D8-4E5A-BCE1-FAB219E5625F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DMV_GUI</RootNamespace>
