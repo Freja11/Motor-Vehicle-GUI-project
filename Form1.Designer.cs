@@ -38,12 +38,17 @@ namespace DMV_GUI
             this.noOfWheelsLabel = new System.Windows.Forms.Label();
             this.noOfSeatsLabel = new System.Windows.Forms.Label();
             this.propertiesGroupBox = new System.Windows.Forms.GroupBox();
-            this.NoOfSeats = new System.Windows.Forms.NumericUpDown();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.customLabel04 = new System.Windows.Forms.Label();
+            this.rbNo2 = new System.Windows.Forms.RadioButton();
+            this.rbYes2 = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.customLabel03 = new System.Windows.Forms.Label();
+            this.rbYes = new System.Windows.Forms.RadioButton();
             this.rbNo = new System.Windows.Forms.RadioButton();
+            this.NoOfSeats = new System.Windows.Forms.NumericUpDown();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.NoOfWheels = new System.Windows.Forms.NumericUpDown();
-            this.rbYes = new System.Windows.Forms.RadioButton();
-            this.customLabel03 = new System.Windows.Forms.Label();
             this.customTb02 = new System.Windows.Forms.TextBox();
             this.customLabel02 = new System.Windows.Forms.Label();
             this.customLabel01 = new System.Windows.Forms.Label();
@@ -58,18 +63,14 @@ namespace DMV_GUI
             this.groupBoxVehicleInfo = new System.Windows.Forms.GroupBox();
             this.rtLog = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.customLabel04 = new System.Windows.Forms.Label();
-            this.rbYes2 = new System.Windows.Forms.RadioButton();
-            this.rbNo2 = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.SortButton = new System.Windows.Forms.Button();
             this.propertiesGroupBox.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NoOfSeats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NoOfWheels)).BeginInit();
             this.vehicleTypeGroupBox.SuspendLayout();
             this.groupBoxVehicleInfo.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbVIN
@@ -174,12 +175,83 @@ namespace DMV_GUI
             this.propertiesGroupBox.TabStop = false;
             this.propertiesGroupBox.Text = "Vehicle Properties";
             // 
-            // NoOfSeats
+            // groupBox2
             // 
-            this.NoOfSeats.Location = new System.Drawing.Point(6, 233);
-            this.NoOfSeats.Name = "NoOfSeats";
-            this.NoOfSeats.Size = new System.Drawing.Size(208, 20);
-            this.NoOfSeats.TabIndex = 18;
+            this.groupBox2.Controls.Add(this.customLabel04);
+            this.groupBox2.Controls.Add(this.rbNo2);
+            this.groupBox2.Controls.Add(this.rbYes2);
+            this.groupBox2.Location = new System.Drawing.Point(106, 337);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(114, 62);
+            this.groupBox2.TabIndex = 28;
+            this.groupBox2.TabStop = false;
+            // 
+            // customLabel04
+            // 
+            this.customLabel04.AutoSize = true;
+            this.customLabel04.Location = new System.Drawing.Point(6, 0);
+            this.customLabel04.Name = "customLabel04";
+            this.customLabel04.Size = new System.Drawing.Size(35, 13);
+            this.customLabel04.TabIndex = 25;
+            this.customLabel04.Text = "label4";
+            this.customLabel04.Visible = false;
+            // 
+            // rbNo2
+            // 
+            this.rbNo2.AutoSize = true;
+            this.rbNo2.Location = new System.Drawing.Point(9, 42);
+            this.rbNo2.Name = "rbNo2";
+            this.rbNo2.Size = new System.Drawing.Size(41, 17);
+            this.rbNo2.TabIndex = 27;
+            this.rbNo2.TabStop = true;
+            this.rbNo2.Text = "NO";
+            this.rbNo2.UseVisualStyleBackColor = true;
+            this.rbNo2.Visible = false;
+            // 
+            // rbYes2
+            // 
+            this.rbYes2.AutoSize = true;
+            this.rbYes2.Location = new System.Drawing.Point(9, 19);
+            this.rbYes2.Name = "rbYes2";
+            this.rbYes2.Size = new System.Drawing.Size(46, 17);
+            this.rbYes2.TabIndex = 26;
+            this.rbYes2.TabStop = true;
+            this.rbYes2.Text = "YES";
+            this.rbYes2.UseVisualStyleBackColor = true;
+            this.rbYes2.Visible = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.customLabel03);
+            this.groupBox1.Controls.Add(this.rbYes);
+            this.groupBox1.Controls.Add(this.rbNo);
+            this.groupBox1.Location = new System.Drawing.Point(0, 337);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(107, 62);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            // 
+            // customLabel03
+            // 
+            this.customLabel03.AutoSize = true;
+            this.customLabel03.Location = new System.Drawing.Point(6, 0);
+            this.customLabel03.Name = "customLabel03";
+            this.customLabel03.Size = new System.Drawing.Size(35, 13);
+            this.customLabel03.TabIndex = 22;
+            this.customLabel03.Text = "label3";
+            this.customLabel03.Visible = false;
+            // 
+            // rbYes
+            // 
+            this.rbYes.AutoSize = true;
+            this.rbYes.Location = new System.Drawing.Point(9, 16);
+            this.rbYes.Name = "rbYes";
+            this.rbYes.Size = new System.Drawing.Size(46, 17);
+            this.rbYes.TabIndex = 23;
+            this.rbYes.TabStop = true;
+            this.rbYes.Text = "YES";
+            this.rbYes.UseVisualStyleBackColor = true;
+            this.rbYes.Visible = false;
             // 
             // rbNo
             // 
@@ -192,6 +264,13 @@ namespace DMV_GUI
             this.rbNo.Text = "NO";
             this.rbNo.UseVisualStyleBackColor = true;
             this.rbNo.Visible = false;
+            // 
+            // NoOfSeats
+            // 
+            this.NoOfSeats.Location = new System.Drawing.Point(6, 233);
+            this.NoOfSeats.Name = "NoOfSeats";
+            this.NoOfSeats.Size = new System.Drawing.Size(208, 20);
+            this.NoOfSeats.TabIndex = 18;
             // 
             // datePicker
             // 
@@ -206,28 +285,6 @@ namespace DMV_GUI
             this.NoOfWheels.Name = "NoOfWheels";
             this.NoOfWheels.Size = new System.Drawing.Size(208, 20);
             this.NoOfWheels.TabIndex = 17;
-            // 
-            // rbYes
-            // 
-            this.rbYes.AutoSize = true;
-            this.rbYes.Location = new System.Drawing.Point(9, 16);
-            this.rbYes.Name = "rbYes";
-            this.rbYes.Size = new System.Drawing.Size(46, 17);
-            this.rbYes.TabIndex = 23;
-            this.rbYes.TabStop = true;
-            this.rbYes.Text = "YES";
-            this.rbYes.UseVisualStyleBackColor = true;
-            this.rbYes.Visible = false;
-            // 
-            // customLabel03
-            // 
-            this.customLabel03.AutoSize = true;
-            this.customLabel03.Location = new System.Drawing.Point(6, 0);
-            this.customLabel03.Name = "customLabel03";
-            this.customLabel03.Size = new System.Drawing.Size(35, 13);
-            this.customLabel03.TabIndex = 22;
-            this.customLabel03.Text = "label3";
-            this.customLabel03.Visible = false;
             // 
             // customTb02
             // 
@@ -343,7 +400,7 @@ namespace DMV_GUI
             // 
             this.buttonRegVeh.Location = new System.Drawing.Point(12, 560);
             this.buttonRegVeh.Name = "buttonRegVeh";
-            this.buttonRegVeh.Size = new System.Drawing.Size(220, 35);
+            this.buttonRegVeh.Size = new System.Drawing.Size(107, 35);
             this.buttonRegVeh.TabIndex = 14;
             this.buttonRegVeh.Text = "Register Vehicle";
             this.buttonRegVeh.UseVisualStyleBackColor = true;
@@ -379,67 +436,22 @@ namespace DMV_GUI
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.ShowLastVehicleFromFile);
             // 
-            // customLabel04
+            // SortButton
             // 
-            this.customLabel04.AutoSize = true;
-            this.customLabel04.Location = new System.Drawing.Point(6, 0);
-            this.customLabel04.Name = "customLabel04";
-            this.customLabel04.Size = new System.Drawing.Size(35, 13);
-            this.customLabel04.TabIndex = 25;
-            this.customLabel04.Text = "label4";
-            this.customLabel04.Visible = false;
-            // 
-            // rbYes2
-            // 
-            this.rbYes2.AutoSize = true;
-            this.rbYes2.Location = new System.Drawing.Point(9, 19);
-            this.rbYes2.Name = "rbYes2";
-            this.rbYes2.Size = new System.Drawing.Size(46, 17);
-            this.rbYes2.TabIndex = 26;
-            this.rbYes2.TabStop = true;
-            this.rbYes2.Text = "YES";
-            this.rbYes2.UseVisualStyleBackColor = true;
-            this.rbYes2.Visible = false;
-            // 
-            // rbNo2
-            // 
-            this.rbNo2.AutoSize = true;
-            this.rbNo2.Location = new System.Drawing.Point(9, 42);
-            this.rbNo2.Name = "rbNo2";
-            this.rbNo2.Size = new System.Drawing.Size(41, 17);
-            this.rbNo2.TabIndex = 27;
-            this.rbNo2.TabStop = true;
-            this.rbNo2.Text = "NO";
-            this.rbNo2.UseVisualStyleBackColor = true;
-            this.rbNo2.Visible = false;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.customLabel03);
-            this.groupBox1.Controls.Add(this.rbYes);
-            this.groupBox1.Controls.Add(this.rbNo);
-            this.groupBox1.Location = new System.Drawing.Point(0, 337);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(107, 62);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.customLabel04);
-            this.groupBox2.Controls.Add(this.rbNo2);
-            this.groupBox2.Controls.Add(this.rbYes2);
-            this.groupBox2.Location = new System.Drawing.Point(106, 337);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(114, 62);
-            this.groupBox2.TabIndex = 28;
-            this.groupBox2.TabStop = false;
+            this.SortButton.Location = new System.Drawing.Point(125, 560);
+            this.SortButton.Name = "SortButton";
+            this.SortButton.Size = new System.Drawing.Size(107, 35);
+            this.SortButton.TabIndex = 18;
+            this.SortButton.Text = "Sort Vehicles";
+            this.SortButton.UseVisualStyleBackColor = true;
+            this.SortButton.Click += new System.EventHandler(this.sortButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(698, 651);
+            this.Controls.Add(this.SortButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBoxVehicleInfo);
             this.Controls.Add(this.buttonRegVeh);
@@ -450,15 +462,15 @@ namespace DMV_GUI
             this.Load += new System.EventHandler(this.onLoad);
             this.propertiesGroupBox.ResumeLayout(false);
             this.propertiesGroupBox.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NoOfSeats)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NoOfWheels)).EndInit();
             this.vehicleTypeGroupBox.ResumeLayout(false);
             this.vehicleTypeGroupBox.PerformLayout();
             this.groupBoxVehicleInfo.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -500,6 +512,7 @@ namespace DMV_GUI
         private System.Windows.Forms.Label customLabel04;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button SortButton;
     }
 }
 

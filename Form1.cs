@@ -14,8 +14,8 @@ namespace DMV_GUI
     public partial class Form1 : Form
     {
 
-        MotorVehicle[] vehicleArray = new MotorVehicle[20]; //Define Array of MotorVehicle objects
-        int mvArrayCounter = 0; //Initialize array counter  
+        List<MotorVehicle> vehicleList = new List<MotorVehicle> { }; //Define Array of MotorVehicle objects
+        
         public static string textFile = "log-"+(DateTime.Now.ToString("dd-MM-yyyy"))+".txt"; //Define dynamic time-dependant name of textfile
 
         public Form1()
@@ -85,11 +85,11 @@ namespace DMV_GUI
                 mv = new Taxi(tbVIN.Text, tbMake.Text, tbModel.Text, (int)NoOfWheels.Value, (int)NoOfSeats.Value, datePicker.Value, customTb01.Text, rbYes.Checked, Convert.ToInt32(customTb02.Text), rbYes2.Checked);
             }
 
-            vehicleArray[mvArrayCounter++] = mv; //Append newest object to array
+            vehicleList.Add(mv); //Append newest object to array
             
             rtLog.Clear();
 
-            foreach(MotorVehicle m in vehicleArray) //Display and store in textfile
+            foreach(MotorVehicle m in vehicleList) //Display and store in textfile
             {
                 if (m != null)
                 {
@@ -106,6 +106,7 @@ namespace DMV_GUI
                     
                 }
             }
+            
         }
         
         private void ShowLastVehicleFromFile(object sender, EventArgs e) //Get from textfile and display in Richtextbox
@@ -134,6 +135,12 @@ namespace DMV_GUI
                 }
                 fileStream.Close(); 
             }        
+        }
+
+        private void sortButton_Click(object sender, EventArgs e)
+        {
+            vehicleList.Sort();
+            vehicleList.ForEach(vehicle => rtLog.AppendText(vehicle.show()+'\n'));
         }        
     }
 }

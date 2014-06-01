@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DMV_GUI
 {
-    abstract class MotorVehicle
+    abstract class MotorVehicle : IComparable<MotorVehicle>
     {
         string VIN;
         string make;
@@ -29,6 +29,11 @@ namespace DMV_GUI
         public virtual string show()
         {
             return string.Format(" Make: {1} {0} Model: {2} {0} Number of Wheels: {3}", fieldSep, make, model, noOfWheels);
+        }
+
+        public int CompareTo(MotorVehicle other)
+        {
+            return this.dateOfProduction.CompareTo(other.dateOfProduction);
         }
     }
 
